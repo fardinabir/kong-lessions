@@ -1,0 +1,9 @@
+_format_version: "1.1"
+services:
+  - name: example-service
+    url: https://kong-test.requestcatcher.com/ # this is a mock endpoint, enter this in your browser to trace incoming the hits
+    routes:
+      - name: example-route
+        strip_path: false
+        paths:
+          - /users
