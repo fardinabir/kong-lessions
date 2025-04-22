@@ -1,0 +1,110 @@
+# Introduction to Kong
+Kong is a scalable, open-source API Gateway and Microservices Management Layer, designed to manage and secure APIs and microservices. It acts as a middleware between API consumers and upstream services, providing functionalities such as load balancing, authentication, rate limiting, and logging.
+
+## Key Features of Kong
+
+- **Scalability**: Kong is built on top of NGINX and can handle a large number of requests per second, making it suitable for high-traffic environments.
+- **Extensibility**: With a rich ecosystem of plugins, Kong can be extended to meet various API management needs, including security, traffic control, and analytics.
+- **Open Source**: As an open-source project, Kong benefits from a large community of developers and contributors, ensuring continuous improvement and support.
+
+## Kong Architecture
+
+Kong's architecture consists of two main components:
+
+- **Kong Gateway**: The core component that processes incoming requests, applies configured plugins, and forwards requests to upstream services.
+- **Kong Admin API**: Provides a RESTful interface for managing Kong's configuration, including services, routes, and plugins.
+
+## Getting Started with Kong
+
+To start using Kong, you need to set up a Kong Gateway and configure it to manage your APIs. This involves defining services and routes, and applying plugins to enhance functionality.
+
+### Kong Configuration
+
+The `kong.yaml` file contains a basic configuration to get you started with Kong. It defines several key components:
+
+- **Service**: Represents an external API or microservice, such as `example-service` pointing to a mock endpoint.
+- **Route**: Determines how requests are forwarded to the service, such as `example-route` with the path `/users`.
+- **Plugins**: Extend Kong's functionality by adding features like authentication, rate limiting, and logging. Plugins can be applied globally or to specific services and routes.
+- **Consumers**: Represent users or applications consuming the APIs. Consumers can be associated with credentials and plugins to manage access and apply policies.
+- **Certificates**: Used for SSL termination, allowing Kong to handle HTTPS traffic securely.
+- **Upstreams**: Define load balancing configurations for distributing requests across multiple targets.
+
+This configuration allows you to trace incoming requests to the mock endpoint and test the setup effectively.
+
+### Steps to Run
+
+1. Ensure Docker is installed and running.
+2. Navigate to the project root path and run the following command to start Kong using docker-compose:
+
+   ```bash
+   docker-compose up
+   ```
+
+3. Access Kong by sending a request to:
+
+   ```bash
+   curl -i http://localhost:8000/users
+   ```
+
+This request will be proxied by Kong as per the configuration of `kong.yaml`. To see the request hit, visit [https://kong-test.requestcatcher.com](https://kong-test.requestcatcher.com), where you will find the request traces.
+
+
+
+## Kong Components and Modes
+
+Kong operates in two main modes: **Database Mode** and **DB-less Mode**.
+
+- **Database Mode**: In this mode, Kong uses a database (PostgreSQL or Cassandra) to store its configuration. This allows for dynamic updates to the configuration via the Admin API without restarting Kong. It's suitable for environments where configuration changes are frequent and need to be applied in real-time.
+
+- **DB-less Mode**: In this mode, Kong does not use a database. Instead, it relies on a declarative configuration file (YAML or JSON) to define its configuration. This mode is ideal for environments where configuration changes are infrequent and can be managed through version control systems. It offers faster startup times and reduced operational complexity.
+
+In this lesson, we will follow the YAML-based declarative approach, which is part of the DB-less mode.
+
+### Kong Components and Ports
+
+Kong consists of several key components, each serving a specific purpose and operating on different ports:
+
+- **Proxy**: The core component that handles incoming requests and forwards them to the appropriate upstream services. It typically listens on port `8000` for HTTP traffic and `8443` for HTTPS traffic.
+
+- **Admin API**: Provides a RESTful interface for managing Kong's configuration, including services, routes, and plugins. It usually listens on port `8001` for HTTP traffic and `8444` for HTTPS traffic.
+
+- **Dev Portal**: An optional component that provides a developer-friendly interface for exploring and consuming APIs managed by Kong. It typically operates on port `8003`.
+
+These components work together to provide a comprehensive API management solution, allowing you to manage, secure, and scale your APIs effectively.
+
+
+### Kong in a Cluster
+
+Below is an enhanced diagram illustrating how Kong protects requests entering a cluster and reconciles requests between multiple services:
+
+```mermaid
+graph LR
+    A[Consumers] -->|Request| B(Kong Gateway)
+    B -->|Forward| C[Auth]
+    C -->|Reconcile| B
+    B -->|Redirect| D[Users]
+    D --> F[Activities]
+    D --> E[Orders]
+    F --> E
+    B -->|Response| A
+```
+
+Kong acts as a gateway, managing and securing traffic between API consumers and a cluster of services, ensuring requests are properly reconciled and redirected within the cluster.
+
+
+## What Can Be Done with Kong
+
+Kong is a versatile API gateway that can be used to manage, secure, and extend APIs and microservices. Here are some of the key functionalities it offers:
+
+- **Load Balancing**: Distribute incoming requests across multiple upstream services to ensure high availability and reliability.
+- **Authentication**: Implement various authentication mechanisms such as OAuth2, JWT, and basic authentication to secure APIs.
+- **Rate Limiting**: Control the number of requests a client can make to an API within a specified time frame to prevent abuse.
+- **Caching**: Cache frequently accessed data to improve response times and reduce load on upstream services.
+- **Logging**: Capture detailed logs of API requests and responses for monitoring and analysis.
+- **Traffic Control**: Manage and route traffic efficiently using plugins and custom logic.
+- **Transformation**: Modify requests and responses on the fly to meet specific requirements.
+- **Monitoring and Analytics**: Collect and analyze metrics to monitor API performance and usage.
+- **SSL Termination**: Decrypt incoming SSL/TLS connections at the gateway level, allowing backend services to handle unencrypted traffic.
+- **API Versioning**: Implement versioning strategies to manage changes and deprecations of APIs.
+- **API Documentation**: Generate and serve API documentation to assist developers in understanding and using APIs.
+
