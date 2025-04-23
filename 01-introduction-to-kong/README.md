@@ -108,3 +108,23 @@ Kong is a versatile API gateway that can be used to manage, secure, and extend A
 - **API Versioning**: Implement versioning strategies to manage changes and deprecations of APIs.
 - **API Documentation**: Generate and serve API documentation to assist developers in understanding and using APIs.
 
+## Kong Use-Cases
+
+Kong is widely used in various scenarios, including:
+
+- **Microservices Management**: Simplify the management of microservices by providing a unified gateway for all services.
+- **API Monetization**: Enable API providers to monetize their APIs by implementing rate limiting and authentication.
+- **Security Enhancement**: Protect APIs from unauthorized access and attacks by implementing robust security measures.
+- **Scalability**: Scale applications seamlessly by distributing traffic across multiple instances and regions.
+
+## Why Use Kong
+
+Kong offers several advantages that make it a popular choice for API management:
+
+- **Open Source**: As an open-source project, Kong benefits from a large community of contributors and continuous improvements.
+- **Extensibility**: With a rich ecosystem of plugins, Kong can be easily extended to meet specific needs.
+- **Performance**: Built on top of NGINX, Kong is capable of handling a large number of requests per second with low latency.
+- **Flexibility**: Supports both database and DB-less modes, allowing users to choose the best configuration for their environment.
+
+
+In this repository, we will explore various practices with Kong through hands-on experiments. By engaging in practical exercises, will try to take a deeper understanding of how to effectively manage and secure APIs using Kong.
