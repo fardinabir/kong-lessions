@@ -125,10 +125,11 @@ Kong is widely used in various scenarios, including:
 
 Kong offers several advantages that make it a popular choice for API management:
 
+- **High Performance**: Built on top of NGINX, Kong is capable of handling a large number of requests per second with low latency. As per benchmarking stats it delivers outstanding performance, handling up to 130K+ RPS with 3.82ms p95 latency, and still maintains 96.3k RPS even with rate limiting and authentication enabled.
 - **Open Source**: As an open-source project, Kong benefits from a large community of contributors and continuous improvements.
 - **Extensibility**: With a rich ecosystem of plugins, Kong can be easily extended to meet specific needs.
-- **Performance**: Built on top of NGINX, Kong is capable of handling a large number of requests per second with low latency.
 - **Flexibility**: Supports both database and DB-less modes, allowing users to choose the best configuration for their environment.
-
+- **Comprehensive API Management**: Kong provides a full suite of features for API management, including load balancing, authentication, rate limiting, and more, making it a one-stop solution for managing APIs.
+- **Security Features**: With built-in security features like SSL termination and various authentication mechanisms, Kong ensures that your APIs are protected from unauthorized access and attacks.
 
 In this repository, we will explore various practices with Kong through hands-on experiments. By engaging in practical exercises, will try to take a deeper understanding of how to effectively manage and secure APIs using Kong.
