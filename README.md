@@ -2,6 +2,23 @@
 
 ---
 
+## Table of Contents
+
+* [Introduction to Kong](#introduction-to-kong)
+   * [Key Features of Kong](#key-features-of-kong)
+   * [Kong Use-Cases](#kong-use-cases)
+   * [Why Use Kong](#why-use-kong)
+   * [Kong Architecture](#kong-architecture)
+* [Getting Started with Kong](#getting-started-with-kong)
+   * [Kong Configuration](#kong-configuration)
+   * [Steps to Run](#steps-to-run)
+* [Kong Components and Modes](#kong-components-and-modes)
+   * [Kong Components and Ports](#kong-components-and-ports)
+   * [Kong in a Cluster](#kong-in-a-cluster)
+* [What Can Be Done with Kong](#what-can-be-done-with-kong)
+
+---
+
 # Introduction to Kong
 [Kong](https://konghq.com/) is a scalable, open-source API Gateway and Microservices Management Layer, designed to manage and secure APIs and microservices. It acts as a middleware between API consumers and upstream services, providing functionalities such as load balancing, authentication, rate limiting, and logging.
 
