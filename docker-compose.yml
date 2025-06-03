@@ -12,3 +12,22 @@ services:
       - KONG_DECLARATIVE_CONFIG=/usr/local/kong/declarative/kong.yaml
     volumes:
       - ./01-introduction-to-kong/kong.yaml:/usr/local/kong/declarative/kong.yaml
+    depends_on:
+      - server1
+      - server2
+
+  server1:
+    build:
+      context: ./backend-services
+      dockerfile: Dockerfile
+    environment:
+      - PORT=3001
+    command: node service-1/service1.js
+
+  server2:
+    build:
+      context: ./backend-services
+      dockerfile: Dockerfile
+    environment:
+      - PORT=3002
+    command: node service-2/service2.js
